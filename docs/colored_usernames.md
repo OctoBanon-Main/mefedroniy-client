@@ -4,9 +4,9 @@ Usernames are displayed in different colors depending on the client the user is 
 
 ## bRAC
 
-Regex: `\uB9AC\u3E70<(.*?)> (.*)`
-Color: Green
-Example: `리㹰<nick> text`
+- Regex: `\uB9AC\u3E70<(.*?)> (.*)`
+- Color: Green
+- Example: `리㹰<nick> text`
 
 ## CRAB
 
@@ -22,12 +22,12 @@ Example: `리㹰<nick> text`
 
 ## Mefedroniy
 
-Regex: `(.*?): (.*)`
-Color: Light Magenta
-Example: `nick: text`
+- Regex: `(.*?): (.*)`
+- Color: Light Magenta
+- Example: `nick: text`
 
 ## clRAC
 
-Regex: `<(.*?)> (.*)`
-Color: Cyan
-Example: `<nick> text`
+- Regex: `<(.*?)> (.*)`
+- Color: Cyan
+- Example: `<nick> text`
