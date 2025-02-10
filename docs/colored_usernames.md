@@ -24,7 +24,7 @@ Usernames are displayed in different colors depending on the client the user is 
 
 - Regex: `\u25B2<(.*?)> (.*)`
 - Color: White
-- Example: `▲<username> content`
+- Example: `▲<nick> text`
 
 ## clRAC
 
