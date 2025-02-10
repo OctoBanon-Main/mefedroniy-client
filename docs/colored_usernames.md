@@ -2,6 +2,12 @@
 
 Usernames are displayed in different colors depending on the client the user is connected through. The color coding is as follows:
 
+## Mefedroniy
+
+- Regex: `(.*?): (.*)`
+- Color: Light Magenta
+- Example: `nick: text`
+
 ## bRAC
 
 - Regex: `\uB9AC\u3E70<(.*?)> (.*)`
@@ -19,12 +25,6 @@ Usernames are displayed in different colors depending on the client the user is 
 - Regex: `\u25B2<(.*?)> (.*)`
 - Color: White
 - Example: `▲<username> content`
-
-## Mefedroniy
-
-- Regex: `(.*?): (.*)`
-- Color: Light Magenta
-- Example: `nick: text`
 
 ## clRAC
 
