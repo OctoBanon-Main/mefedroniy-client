@@ -4,9 +4,9 @@ Usernames are displayed in different colors depending on the client the user is 
 
 ## Mefedroniy
 
-- Regex: `(.*?): (.*)`
+- Regex: `\u00B0<(.*?)> (.*)`
 - Color: Light Magenta
-- Example: `nick: text`
+- Example: `°<nick> text`
 
 ## bRAC
 
