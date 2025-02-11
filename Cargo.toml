@@ -10,7 +10,6 @@ edition = "2021"
 
 [dependencies]
 tokio = { version = "1.35.1", features = ["full"] }
-chrono = "0.4.39"
 crossterm = "0.27.0"
 regex = "1.10.2"
 ratatui = "0.29.0"
