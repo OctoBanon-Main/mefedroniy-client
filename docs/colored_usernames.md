@@ -26,6 +26,12 @@ Usernames are displayed in different colors depending on the client the user is 
 - Color: White
 - Example: `▲<nick> text`
 
+## WinRAC
+
+- Regex: `\u253C<(.*?)> (.*)`
+- Color: Light Green
+- Example: `┼<nick> text`
+
 ## clRAC
 
 - Regex: `<(.*?)> (.*)`
