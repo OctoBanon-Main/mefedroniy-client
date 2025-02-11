@@ -42,7 +42,6 @@ pub fn format_message(raw_message: String) -> Option<FormattedMessage> {
     })
 }
 
-/// Удаляет ANSI-escape последовательности и управляющие символы.
 pub fn sanitize_text(input: &str) -> String {
     let ansi_regex = Regex::new(r"\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])").unwrap();
     let control_chars_regex = Regex::new(r"[\x00-\x1F\x7F]").unwrap();
@@ -52,7 +51,6 @@ pub fn sanitize_text(input: &str) -> String {
         .into_owned()
 }
 
-/// Пытается извлечь никнейм, текст сообщения и назначить цвет по регуляркам.
 pub fn get_username_color(message: &str) -> (Color, String, String) {
     COLORED_USERNAMES
         .iter()
