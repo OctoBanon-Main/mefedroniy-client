@@ -46,7 +46,7 @@ cargo build --release
 ## См. также
 
 - [Цветные юзернеймы](https://github.com/OctoBanon-Main/mefedroniy-client/blob/main/docs/colored_usernames.ru.md) — Поддержка цветных имен пользователей в чате.
-- [RAC protocol v1.99.2](https://gitea.bedohswe.eu.org/pixtaded/crab#rac-protocol) — Протокол Real Address Chat.
+- [RAC protocol v1.99.2](https://gitea.bedohswe.eu.org/pixtaded/crab#rac-protocol) — Информация о протоколе.
 - [RAC protocol v1](https://bedohswe.eu.org/text/rac/protocol.md.html) — Первая версия протокола.
 - [bRAC](https://github.com/MeexReay/bRAC) — Клиент написанный на Rust.
 - [CRAB](https://gitea.bedohswe.eu.org/pixtaded/crab) — Неофицальный клиент и сервер на Java.
