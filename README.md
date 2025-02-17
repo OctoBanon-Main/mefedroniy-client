@@ -44,7 +44,7 @@ Alternatively, you can download the precompiled binary from the [Releases](https
 
 ## License
 
-This project is licensed under the Unlicense.
+This project is licensed under the MIT License.
 
 ## See also
 
