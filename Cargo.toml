@@ -4,7 +4,7 @@ description = "TUI client for Real Address Chat protocol."
 authors = ["OctoBanon (Maksim Bengraf) <me@octobanon.com>"]
 readme = "README.md"
 repository = "https://github.com/OctoBanon-Main/mefedroniy-client"
-license = "Unlicense"
+license = "MIT"
 version = "1.0.1+1.99.2"
 edition = "2021"
 
