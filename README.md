@@ -50,7 +50,7 @@ This project is licensed under the MIT License.
 
 - [RAC-hub](https://forbirdden.github.io/RAC-Hub) - List of all clients and servers for RAC
 - [Colored Usernames](https://github.com/OctoBanon-Main/mefedroniy-client/blob/main/docs/colored_usernames.md) — About support for colored usernames in chat.
-- [RAC protocol v1.99.2](https://gitea.bedohswe.eu.org/pixtaded/crab#rac-protocol) — The Real Address Chat protocol.
+- [RAC protocol v2.0](https://gitea.bedohswe.eu.org/pixtaded/crab#rac-protocol) — The Real Address Chat protocol.
 - [RAC protocol v1](https://bedohswe.eu.org/text/rac/protocol.md.html) - First version of the protocol.
 - [bRAC](https://github.com/MeexReay/bRAC) - Another rust client for RAC.
 - [CRAB](https://gitea.bedohswe.eu.org/pixtaded/crab) - Client and server for RAC on Java.
