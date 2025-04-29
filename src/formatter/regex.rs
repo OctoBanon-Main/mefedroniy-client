@@ -7,8 +7,6 @@ lazy_static! {
     pub static ref COLORED_USERNAMES: Vec<(Regex, Color)> = vec![
         (Regex::new(r"\u{B9AC}\u{3E70}<(.*?)> (.*)").unwrap(), Color::Green),
         (Regex::new(r"\u{2550}\u{2550}\u{2550}<(.*?)> (.*)").unwrap(), Color::LightRed),
-        (Regex::new(r"\u{25B2}<(.*?)> (.*)").unwrap(), Color::Rgb(255, 255, 255)),
-        (Regex::new(r"\u{253C}<(.*?)> (.*)").unwrap(), Color::LightGreen),
         (Regex::new(r"\u{00B0}\u{0298}<(.*?)> (.*)").unwrap(), Color::LightMagenta),
         (Regex::new(r"<(.*?)> (.*)").unwrap(), Color::Cyan),
     ];
