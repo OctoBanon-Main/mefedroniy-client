@@ -2,7 +2,7 @@ use std::error::Error;
 use std::time::Duration;
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::TcpStream;
-use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender};
+use tokio::sync::mpsc::UnboundedSender;
 
 async fn try_receive_messages(
     addr: &str,
@@ -44,29 +44,5 @@ pub async fn receive_messages(addr: String, update_interval: u64, chat_tx: Unbou
             Err(e) => eprintln!("Ошибка получения сообщений: {}", e),
         }
         tokio::time::sleep(Duration::from_secs(update_interval)).await;
-    }
-}
-
-pub async fn send_messages(addr: String, mut send_rx: UnboundedReceiver<(String, String)>) {
-    while let Some((nick, text)) = send_rx.recv().await {
-        let stream = match TcpStream::connect(&addr).await {
-            Ok(stream) => stream,
-            Err(e) => {
-                eprintln!("Ошибка подключения: {}", e);
-                continue;
-            }
-        };
-
-        let mut stream = stream;
-        let formatted_msg = format!("\u{00B0}\u{0298}<{}> {}", nick, text);
-        let padded_message = format!("{: <39}", formatted_msg);
-        let mut buf = vec![0x01];
-        buf.extend_from_slice(format!("\r\x03{}", padded_message).as_bytes());
-
-        match stream.write_all(&buf).await {
-            Ok(()) => (),
-            Err(e) => eprintln!("Ошибка отправки сообщения: {}", e),
-        }
-        let _ = stream.shutdown().await;
     }
 }
