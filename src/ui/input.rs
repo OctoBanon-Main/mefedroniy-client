@@ -14,7 +14,7 @@ pub fn render_input(f: &mut Frame, area: Rect, app: &mut App) {
         .block(
             Block::default()
                 .borders(Borders::ALL)
-                .title(Span::styled(" Ввод (Enter отправить, Esc выйти) ", Style::default().fg(Color::White)))
+                .title(Span::styled(" Input (Press Enter to send, Esc to exit) ", Style::default().fg(Color::White)))
                 .border_style(Style::default().fg(Color::Magenta)),
         )
         .style(Style::default().fg(Color::White).bg(Color::Black))

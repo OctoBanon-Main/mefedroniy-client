@@ -1,13 +1,17 @@
 use std::io;
+
 use crossterm::{
     execute,
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
+
 use ratatui::{backend::CrosstermBackend, Terminal};
+
+use anyhow::Result;
 
 pub type MefTerminal = Terminal<CrosstermBackend<io::Stdout>>;
 
-pub fn setup_terminal() -> Result<MefTerminal, Box<dyn std::error::Error>> {
+pub fn setup_terminal() -> Result<MefTerminal> {
     enable_raw_mode()?;
     let mut stdout = io::stdout();
     execute!(stdout, EnterAlternateScreen, crossterm::event::EnableMouseCapture)?;
@@ -17,7 +21,7 @@ pub fn setup_terminal() -> Result<MefTerminal, Box<dyn std::error::Error>> {
     Ok(terminal)
 }
 
-pub fn cleanup_terminal(mut terminal: MefTerminal) -> Result<(), Box<dyn std::error::Error>> {
+pub fn cleanup_terminal(mut terminal: MefTerminal) -> Result<()> {
     disable_raw_mode()?;
     execute!(
         terminal.backend_mut(),

@@ -1,8 +1,9 @@
+use anyhow::{Context, Result};
 use tokio::io::AsyncWriteExt;
 use tokio::net::TcpStream;
 use tokio::sync::mpsc::UnboundedReceiver;
 
-pub async fn send_messages(addr: String, mut send_rx: UnboundedReceiver<(String, String)>) {
+pub async fn send_messages(addr: String, mut send_rx: UnboundedReceiver<(String, String)>) -> Result<()> {
     while let Some((nick, text)) = send_rx.recv().await {
         let stream = match TcpStream::connect(&addr).await {
             Ok(stream) => stream,
@@ -18,10 +19,13 @@ pub async fn send_messages(addr: String, mut send_rx: UnboundedReceiver<(String,
         let mut buf = vec![0x01];
         buf.extend_from_slice(format!("\r\x03{}", padded_message).as_bytes());
 
-        match stream.write_all(&buf).await {
-            Ok(()) => (),
-            Err(e) => eprintln!("Ошибка отправки сообщения: {}", e),
-        }
-        let _ = stream.shutdown().await;
+        stream
+            .write_all(&buf)
+            .await
+            .context("")?;
+
+        stream.shutdown().await.ok();
     }
+
+    Ok(())
 }

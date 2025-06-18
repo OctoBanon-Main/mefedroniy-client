@@ -19,14 +19,19 @@ pub fn render_chat(f: &mut Frame, area: Rect, app: &mut App) {
     let visible_area = area.height.saturating_sub(2) as usize;
     let total_lines = all_lines.len();
 
-    if total_lines <= visible_area {
-        app.auto_scroll = true;
-        app.scroll = 0;
-    } else if app.auto_scroll {
-        app.scroll = (total_lines - visible_area) as u16;
-    } else {
-        let max_scroll = total_lines - visible_area;
-        app.scroll = app.scroll.min(max_scroll as u16);
+    let max_scroll = total_lines.saturating_sub(visible_area);
+
+    match (total_lines <= visible_area, app.auto_scroll) {
+        (true, _) => {
+            app.auto_scroll = true;
+            app.scroll = 0;
+        }
+        (false, true) => {
+            app.scroll = max_scroll as u16;
+        }
+        (false, false) => {
+            app.scroll = app.scroll.min(max_scroll as u16);
+        }
     }
 
     let visible_lines: Vec<Line> = all_lines
@@ -40,7 +45,7 @@ pub fn render_chat(f: &mut Frame, area: Rect, app: &mut App) {
         .block(
             Block::default()
                 .borders(Borders::ALL)
-                .title(Span::styled(" Чат ", Style::default().fg(Color::White)))
+                .title(Span::styled(" Chat History ", Style::default().fg(Color::White)))
                 .border_style(Style::default().fg(Color::Magenta)),
         )
         .style(Style::default().fg(Color::White))

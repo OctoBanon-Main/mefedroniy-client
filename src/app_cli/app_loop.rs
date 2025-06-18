@@ -1,17 +1,20 @@
 use std::time::Duration;
+
+use anyhow::Result;
 use crossterm::event;
 use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender};
+
 use crate::app::App;
-use crate::ui::draw_ui;
-use crate::input::process_event;
 use crate::app_cli::setup::terminal::MefTerminal;
+use crate::input::process_event;
+use crate::ui::draw_ui;
 
 pub async fn run_app_loop(
     terminal: &mut MefTerminal,
     mut chat_rx: UnboundedReceiver<String>,
     send_tx: UnboundedSender<(String, String)>,
     username: String,
-) -> Result<(), Box<dyn std::error::Error>> {
+) -> Result<()> {
     let mut app = App::new();
 
     loop {
@@ -22,14 +25,11 @@ pub async fn run_app_loop(
 
         draw_ui(terminal, &mut app)?;
 
-        match event::poll(Duration::from_millis(50))? {
-            true => match event::read()? {
-                evt => match process_event(evt, &mut app, &send_tx, &username) {
-                    true => break,
-                    false => continue,
-                }
-            },
-            false => continue,
+        if event::poll(Duration::from_millis(50))? {
+            let evt = event::read()?;
+            if process_event(evt, &mut app, &send_tx, &username) {
+                break;
+            }
         }
     }
 

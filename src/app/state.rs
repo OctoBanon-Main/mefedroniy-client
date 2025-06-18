@@ -7,6 +7,7 @@ pub struct App {
     pub scroll: u16,
     pub auto_scroll: bool,
     pub cursor_position: usize,
+    pub error_message: Option<String>,
 }
 
 impl App {
@@ -17,6 +18,7 @@ impl App {
             scroll: 0,
             auto_scroll: true,
             cursor_position: 0,
+            error_message: None,
         }
     }
 

@@ -2,50 +2,62 @@ use crate::config::Config;
 use crate::utils::input::read_input;
 use crate::utils::network::resolve_address;
 
-pub async fn setup_config() -> (Config, String) {
+use anyhow::{Context, Result};
+
+pub async fn setup_config() -> Result<(Config, String)> {
     println!("==========================================");
     println!("            Mefedroniy Client             ");
     println!("==========================================\n");
 
-    let mut config = Config::load();
+    let mut config = Config::load()
+        .context("Failed to load configuration")?;
 
-    println!("Сохранённые серверы:");
+    println!("Saved servers:");
     for (i, server) in config.servers.iter().enumerate() {
         println!("{}: {}", i + 1, server);
     }
-    println!("0: Ввести новый сервер");
+    println!("0: Add a new server");
 
-    let server_choice: usize = read_input("Выберите сервер: ")
-        .unwrap()
-        .parse()
-        .unwrap_or(0);
+    let server_choice_str = read_input("Choose a server: ")
+        .await
+        .context("Error reading server choice")?;
+    let server_choice: usize = server_choice_str.parse().unwrap_or(0);
 
-    let server_addr = match server_choice {
-        n if n > 0 && n <= config.servers.len() => config.servers[n - 1].clone(),
-        _ => {
-            let server_host = read_input("Введите IP/домен сервера: ").unwrap();
-            let server_port = read_input("Введите порт сервера: ").unwrap();
-            let addr = resolve_address(&server_host, &server_port)
-                .await
-                .unwrap_or_else(|| format!("{}:{}", server_host, server_port));
-            config.add_server(addr.clone());
-            addr
-        }
+    let server_addr = if server_choice > 0 && server_choice <= config.servers.len() {
+        config.servers[server_choice - 1].clone()
+    } else {
+        let server_host = read_input("Enter server IP/domain: ")
+            .await
+            .context("Error entering server IP/domain")?;
+        let server_port = read_input("Enter server port: ")
+            .await
+            .context("Error entering server port")?;
+        let addr = resolve_address(&server_host, &server_port)
+            .await
+            .unwrap_or_else(|| format!("{}:{}", server_host, server_port));
+        config.add_server(addr.clone())?;
+        addr
     };
 
-    config.username = match config.username.as_str() {
-        "" => read_input("Введите имя пользователя: ").unwrap(),
-        username => username.to_string(),
+    config.username = if config.username.is_empty() {
+        read_input("Enter username: ")
+            .await
+            .context("Error entering username")?
+    } else {
+        config.username.clone()
     };
 
-    config.update_interval = match config.update_interval {
-        5 => read_input("Введите интервал обновления (секунд): ")
-            .unwrap()
-            .parse()
-            .unwrap_or(5),
-        interval => interval,
+    config.update_interval = if config.update_interval == 5 {
+        let input = read_input("Enter update interval (seconds): ")
+            .await
+            .context("Error entering update interval")?;
+        input.parse().unwrap_or(5)
+    } else {
+        config.update_interval
     };
-    config.save();
-    
-    (config, server_addr)
+
+    config.save()
+        .context("Failed to save configuration")?;
+
+    Ok((config, server_addr))
 }
