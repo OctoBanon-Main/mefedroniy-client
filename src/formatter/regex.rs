@@ -13,6 +13,7 @@ pub static COLORED_USERNAMES: Lazy<Vec<(Regex, Color)>> = Lazy::new(|| vec![
     (Regex::new(r"\u{00B0}\u{0298}<(.*?)> (.*)").expect("Invalid Mefedroniy regex"), Color::LightMagenta),
     (Regex::new(r"\u{25B2}<(.*?)> (.*)").expect("Invalid Tower regex"), Color::Rgb(255, 255, 255)),
     (Regex::new(r"\u{253C}<(.*?)> (.*)").expect("Invalid WinRAC regex"), Color::LightGreen),
+    (Regex::new(r"\u{2042}<(.*?)> (.*)").expect("Invalid cRACk regex"), Color::Rgb(245, 245, 67)),
     (Regex::new(r"<(.*?)> (.*)").expect("Invalid clRAC regex"), Color::Cyan),
 ]);
 
