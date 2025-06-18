@@ -1,4 +1,4 @@
-use crossterm::event::{KeyCode, KeyEvent};
+use crossterm::event::{KeyCode, KeyEvent, KeyEventKind};
 use tokio::sync::mpsc::UnboundedSender;
 use crate::app::App;
 
@@ -8,6 +8,10 @@ pub fn handle_key_event(
     send_tx: &UnboundedSender<(String, String)>,
     username: &str,
 ) -> bool {
+    if key_event.kind != KeyEventKind::Press {
+        return false;
+    }
+    
     match key_event.code {
         KeyCode::Char(c) => {
             let mut chars: Vec<char> = app.input.chars().collect();
