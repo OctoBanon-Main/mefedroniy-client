@@ -1,9 +1,17 @@
-use std::fs;
+use std::{fs, path::Path};
 
 use anyhow::{Context, Result};
 use crate::config::{Config, CONFIG_FILE};
 
 pub fn load_config() -> Result<Config> {
+    if !Path::new(CONFIG_FILE).exists() {
+        let default_config = Config::default();
+        save_config(&default_config)
+            .with_context(|| format!("Не удалось создать файл конфигурации: {}", CONFIG_FILE))?;
+        return Ok(default_config);
+    }
+
+    // Если файл есть, читаем его
     let content = fs::read_to_string(CONFIG_FILE)
         .with_context(|| format!("Не удалось прочитать файл конфигурации: {}", CONFIG_FILE))?;
 

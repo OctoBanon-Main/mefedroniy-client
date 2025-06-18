@@ -16,3 +16,13 @@ impl Config {
         }
     }
 }
+
+impl Default for Config {
+    fn default() -> Self {
+        Self {
+            servers: Vec::new(),
+            username: String::new(),
+            update_interval: 5,
+        }
+    }
+}
