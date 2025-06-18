@@ -8,7 +8,7 @@ pub async fn send_messages(addr: String, mut send_rx: UnboundedReceiver<(String,
         let stream = match TcpStream::connect(&addr).await {
             Ok(stream) => stream,
             Err(e) => {
-                eprintln!("Ошибка подключения: {}", e);
+                eprintln!("Connection error: {}", e);
                 continue;
             }
         };
@@ -22,7 +22,7 @@ pub async fn send_messages(addr: String, mut send_rx: UnboundedReceiver<(String,
         stream
             .write_all(&buf)
             .await
-            .context("")?;
+            .context("Failed to write message to stream")?;
 
         stream.shutdown().await.ok();
     }
