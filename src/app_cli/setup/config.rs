@@ -1,4 +1,4 @@
-use crate::config::Config;
+use crate::{config::Config, updater::github::check_for_updates};
 use crate::utils::input::read_input;
 use crate::utils::network::resolve_address;
 
@@ -8,6 +8,8 @@ pub async fn setup_config() -> Result<(Config, String)> {
     println!("==========================================");
     println!("            Mefedroniy Client             ");
     println!("==========================================\n");
+
+    check_for_updates().await?;
 
     let mut config = Config::load()
         .context("Failed to load configuration")?;
