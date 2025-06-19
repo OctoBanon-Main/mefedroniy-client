@@ -6,3 +6,4 @@ pub mod ui;
 pub mod input;
 pub mod utils;
 pub mod app_cli;
+pub mod updater;
