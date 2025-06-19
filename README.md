@@ -59,4 +59,5 @@ This project is licensed under the MIT License.
 - [RAC protocol v1](https://bedohswe.eu.org/text/rac/protocol.md.html) - First version of the protocol.
 - [bRAC](https://github.com/MeexReay/bRAC) - Another rust client for RAC.
 - [CRAB](https://gitea.bedohswe.eu.org/pixtaded/crab) - Client and server for RAC on Java.
-- [AlmatyD](https://gitea.bedohswe.eu.org/bedohswe/almatyd) - Unofficial server implementation for RAC.
+- [cRACk](https://github.com/pansangg/cRACk) - TUI client on Python.
+- [AlmatyD](https://gitea.bedohswe.eu.org/bedohswe/almatyd) - Unofficial server implementation for RAC v1.0.
