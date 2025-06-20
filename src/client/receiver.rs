@@ -17,17 +17,19 @@ async fn try_receive_messages(
         .await
         .context("Failed to send initial byte")?;
 
-    let mut size_buf = vec![0u8; 1024];
+    let mut size_buf = [0u8; 1024];
     let n = stream
         .read(&mut size_buf)
         .await
         .context("Failed to read file size")?;
     
-    let file_size: usize = String::from_utf8_lossy(&size_buf[..n])
-        .trim_matches('\0')
-        .trim()
-        .parse()
-        .context("Failed to parse file size")?;
+    let real_length = size_buf[..n].iter().position(|&x| x == 0).unwrap_or(n);
+    let file_size_str = std::str::from_utf8(&size_buf[..real_length])
+        .context("Failed to convert file size to UTF-8")?
+        .trim();
+
+    let file_size: usize = file_size_str.parse()
+        .with_context(|| format!("Failed to parse file size: {}", file_size_str))?;
 
     match file_size.cmp(last_position) {
         std::cmp::Ordering::Less => *last_position = 0,
