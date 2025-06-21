@@ -53,7 +53,7 @@ This project is licensed under the MIT License.
 
 ## See also
 
-- [Forbirdden's RAC-hub](https://the-stratosphere-solutions.github.io/RAC-Hub/) - List of all clients and servers for RAC
+- [Official RAC-hub](https://the-stratosphere-solutions.github.io/RAC-Hub/) - List of all clients and servers for RAC
 - [MeexReay's RAC-hub](https://meexreay.github.io/RAC-Hub/) - List of all clients and servers for RAC (MeexReay's fork)
 - [User Agents](https://github.com/MeexReay/bRAC/blob/main/docs/user_agents.md) — Information about the method used to detect the user's client.
 - [RAC protocol v2.0](https://gitea.bedohswe.eu.org/pixtaded/crab#rac-protocol) — The Real Address Chat protocol.
