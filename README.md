@@ -47,19 +47,25 @@ The compiled executable will be available in the `/target/release/` directory.
 
 Alternatively, you can download the precompiled binary from the [Releases](https://github.com/OctoBanon-Main/mefedroniy-client/releases) page.
 
+### RAC Resources Comparison
+
+| Project | Maintainer | Type | Key Features |
+|---------|------------|------|-------------|
+| [Forbirdden's RAC Hub](https://the-stratosphere-solutions.github.io/RAC-Hub/) | Forbirdden | 🏛️ Original Hub | • Complete client/server list<br>• Protocol documentation<br>• First public catalog |
+| [MeexReay's RAC Hub](https://meexreay.github.io/RAC-Hub/) | MeexReay | 🛠️ Community Fork | • Same core data as Forbirdden's<br>• Alternative categorization |
+| [Racinfo](https://racinfo.kostyazero.com/) | kostya-zero | 🚀 Independent Project | • Modern documentation approach<br>• Next.js-powered interface |
+
+**Legend:**
+- 🏛️ **Original Hub** - The first complete reference
+- 🛠️ **Community Fork** - Community-improved version  
+- 🚀 **Independent** - Fully separate implementation
+
 ## License
 
 This project is licensed under the MIT License.
 
 ## See also
 
-- [Racinfo](https://racinfo.kostyazero.com/) - Unofficial RAC protocol hub by kostya-zero (not affiliated with Sugoma, creator of RAC, or Forbirdden/Meexreay). Provides comprehensive documentation including client/server implementations.
-
-- [Forbirdden's RAC-hub](https://the-stratosphere-solutions.github.io/RAC-Hub/) - List of all clients and servers for RAC
-- [MeexReay's RAC-hub](https://meexreay.github.io/RAC-Hub/) - List of all clients and servers for RAC (MeexReay's fork)
-- [User Agents](https://github.com/MeexReay/bRAC/blob/main/docs/user_agents.md) — Information about the method used to detect the user's client.
-- [RAC protocol v2.0](https://gitea.bedohswe.eu.org/pixtaded/crab#rac-protocol) — The Real Address Chat protocol.
-- [RAC protocol v1](https://bedohswe.eu.org/text/rac/protocol.md.html) - First version of the protocol.
 - [bRAC](https://github.com/MeexReay/bRAC) - Another rust client for RAC.
 - [CRAB](https://gitea.bedohswe.eu.org/pixtaded/crab) - Client and server for RAC on Java.
 - [cRACk](https://github.com/pansangg/cRACk) - TUI client on Python.
