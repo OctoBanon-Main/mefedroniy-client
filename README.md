@@ -53,7 +53,7 @@ This project is licensed under the MIT License.
 
 ## See also
 
-- [Racinfo](https://racinfo.kostyazero.com/) - Unofficial website (not affiliated with Sugoma, creator of RAC, or Forbirdden/Meexreay, owners of similar hubs). Comprehensive documentation on the RAC protocol, including client and server implementations.
+- [Racinfo](https://racinfo.kostyazero.com/) - Unofficial RAC protocol hub by kostya-zero (not affiliated with Sugoma, creator of RAC, or Forbirdden/Meexreay). Provides comprehensive documentation including client/server implementations.
 
 - [Forbirdden's RAC-hub](https://the-stratosphere-solutions.github.io/RAC-Hub/) - List of all clients and servers for RAC
 - [MeexReay's RAC-hub](https://meexreay.github.io/RAC-Hub/) - List of all clients and servers for RAC (MeexReay's fork)
