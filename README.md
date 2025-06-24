@@ -52,12 +52,10 @@ Alternatively, you can download the precompiled binary from the [Releases](https
 | Project | Maintainer | Type | Key Features |
 |---------|------------|------|-------------|
 | [Forbirdden's RAC Hub](https://the-stratosphere-solutions.github.io/RAC-Hub/) | Forbirdden | 🏛️ Original Hub | • Complete client/server list<br>• Protocol documentation<br>• First public catalog |
-| [MeexReay's RAC Hub](https://meexreay.github.io/RAC-Hub/) | MeexReay | 🛠️ Community Fork | • Same core data as Forbirdden's<br>• Alternative categorization |
 | [Racinfo](https://racinfo.kostyazero.com/) | kostya-zero | 🚀 Independent Project | • Modern documentation approach<br>• Next.js-powered interface |
 
 **Legend:**
 - 🏛️ **Original Hub** - The first complete reference
-- 🛠️ **Community Fork** - Community-improved version  
 - 🚀 **Independent** - Fully separate implementation
 
 ## License
