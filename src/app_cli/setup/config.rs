@@ -1,65 +1,108 @@
-use crate::{config::Config, updater::github::check_for_updates};
-use crate::utils::input::read_input;
-use crate::utils::network::resolve_address;
-
+use crate::{
+    config::{Config, load, save},
+    updater::github::check_for_updates,
+    utils::{input::read_input, network::resolve_address},
+};
 use anyhow::{Context, Result};
 
 pub async fn setup_config() -> Result<(Config, String)> {
-    println!("==========================================");
-    println!("            Mefedroniy Client             ");
-    println!("==========================================\n");
-
+    print_welcome_message();
     check_for_updates().await?;
 
-    let mut config = Config::load()
-        .context("Failed to load configuration")?;
+    let mut config = load().context("Failed to load configuration")?;
+    let server_addr = handle_server_selection(&mut config).await?;
+    handle_user_settings(&mut config).await?;
 
+    save(&config).context("Failed to save configuration")?;
+    Ok((config, server_addr))
+}
+
+fn print_welcome_message() {
+    println!(r#"
+  __  __       __          _                 _       
+ |  \/  | ___ / _| ___  __| |_ __ ___  _ __ (_)_   _ 
+ | |\/| |/ _ \ |_ / _ \/ _` | '__/ _ \| '_ \| | | | |
+ | |  | |  __/  _|  __/ (_| | | | (_) | | | | | |_| |
+ |_|  |_|\___|_|  \___|\__,_|_|  \___/|_| |_|_|\__, |
+                                               |___/ 
+─────────────────────────────────────────────────────
+    "#)
+}
+
+async fn handle_server_selection(config: &mut Config) -> Result<String> {
+    print_saved_servers(&config.servers);
+    
+    let choice = prompt_server_choice().await?;
+    
+    if choice > 0 && choice <= config.servers.len() {
+        Ok(config.servers[choice - 1].clone())
+    } else {
+        add_new_server(config).await
+    }
+}
+
+fn print_saved_servers(servers: &[String]) {
     println!("Saved servers:");
-    for (i, server) in config.servers.iter().enumerate() {
+    for (i, server) in servers.iter().enumerate() {
         println!("{}: {}", i + 1, server);
     }
     println!("0: Add a new server");
+}
 
-    let server_choice_str = read_input("Choose a server: ")
+async fn prompt_server_choice() -> Result<usize> {
+    read_input("Choose a server: ")
         .await
-        .context("Error reading server choice")?;
-    let server_choice: usize = server_choice_str.parse().unwrap_or(0);
+        .context("Error reading server choice")?
+        .parse()
+        .map_err(|_| anyhow::anyhow!("Invalid server choice"))
+}
 
-    let server_addr = if server_choice > 0 && server_choice <= config.servers.len() {
-        config.servers[server_choice - 1].clone()
-    } else {
-        let server_host = read_input("Enter server IP/domain: ")
-            .await
-            .context("Error entering server IP/domain")?;
-        let server_port = read_input("Enter server port: ")
-            .await
-            .context("Error entering server port")?;
-        let addr = resolve_address(&server_host, &server_port)
-            .await
-            .unwrap_or_else(|| format!("{}:{}", server_host, server_port));
-        config.add_server(addr.clone())?;
-        addr
-    };
+async fn add_new_server(config: &mut Config) -> Result<String> {
+    let (host, port) = prompt_server_details().await?;
+    let addr = resolve_address(&host, &port)
+        .await
+        .unwrap_or_else(|| format!("{}:{}", host, port));
+    
+    config.add_server(addr.clone())?;
+    Ok(addr)
+}
 
+async fn prompt_server_details() -> Result<(String, String)> {
+    let host = read_input("Enter server IP/domain: ")
+        .await
+        .context("Error entering server IP/domain")?;
+    let port = read_input("Enter server port: ")
+        .await
+        .context("Error entering server port")?;
+    Ok((host, port))
+}
+
+async fn handle_user_settings(config: &mut Config) -> Result<()> {
     config.username = if config.username.is_empty() {
-        read_input("Enter username: ")
-            .await
-            .context("Error entering username")?
+        prompt_username().await?
     } else {
         config.username.clone()
     };
 
     config.update_interval = if config.update_interval == 5 {
-        let input = read_input("Enter update interval (seconds): ")
-            .await
-            .context("Error entering update interval")?;
-        input.parse().unwrap_or(5)
+        prompt_update_interval().await?
     } else {
         config.update_interval
     };
 
-    config.save()
-        .context("Failed to save configuration")?;
+    Ok(())
+}
 
-    Ok((config, server_addr))
+async fn prompt_username() -> Result<String> {
+    read_input("Enter username: ")
+        .await
+        .context("Error entering username")
+}
+
+async fn prompt_update_interval() -> Result<u64> {
+    read_input("Enter update interval (seconds): ")
+        .await
+        .context("Error entering update interval")?
+        .parse()
+        .map_err(|_| anyhow::anyhow!("Invalid interval value"))
 }

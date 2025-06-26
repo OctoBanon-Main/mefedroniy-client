@@ -1,5 +1,5 @@
 pub mod app;
-pub mod client;
+pub mod rac_proto;
 pub mod config;
 pub mod formatter;
 pub mod ui;

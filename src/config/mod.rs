@@ -1,7 +1,5 @@
-mod data;
-mod file;
-mod operations;
+pub mod model;
+pub mod io;
 
-pub use data::Config;
-
-pub const CONFIG_FILE: &str = "servers.json";
+pub use model::Config;
+pub use io::{load, save};
