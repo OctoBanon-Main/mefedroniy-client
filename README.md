@@ -11,7 +11,9 @@ Mefedroniy is a TUI client compatible with the Real Address Chat (RAC) protocol,
 
 ## Screenshot
 
-![Screenshot of the Mefedroniy Client with visible chat messages](https://github.com/OctoBanon-Main/mefedroniy-client/blob/main/misc/win_client_screenshot.png?raw=true)
+![Screenshot of server selection menu showing a list of saved servers, an option to add a new server, and a notification indicating that a software update is available.](https://github.com/OctoBanon-Main/mefedroniy-client/blob/main/misc/server_selector.png?raw=true)
+
+![Screenshot of the Mefedroniy Client with visible chat messages](https://github.com/OctoBanon-Main/mefedroniy-client/blob/main/misc/chat.png?raw=true)
 
 ## Prerequisites
 
