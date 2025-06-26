@@ -1,6 +1,6 @@
 use tokio::sync::mpsc::{UnboundedReceiver, UnboundedSender, unbounded_channel};
-use crate::client::receiver::receive_messages;
-use crate::client::sender::send_messages;
+use crate::rac_proto::receiver::receive_messages;
+use crate::rac_proto::sender::send_messages;
 
 pub struct NetworkChannels {
     pub chat_rx: UnboundedReceiver<String>,
