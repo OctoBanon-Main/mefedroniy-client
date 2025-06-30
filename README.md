@@ -5,8 +5,6 @@
 
 **Mefedroniy — TUI client for Real Address Chat (RAC).**
 
-[English](README.md) | [Русский](lang/README.ru.md)
-
 Mefedroniy is a TUI client compatible with the Real Address Chat (RAC) protocol, created by Mr. Sugoma and marketed as the "IRC Killer", designed for text-based communication via the terminal.
 
 ## Screenshots
