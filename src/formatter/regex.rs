@@ -14,6 +14,7 @@ pub static COLORED_USERNAMES: Lazy<Vec<(Regex, Color)>> = Lazy::new(|| vec![
     (Regex::new(r"\u{25B2}<(.*?)> (.*)").expect("Invalid Tower regex"), Color::Rgb(255, 255, 255)),
     (Regex::new(r"\u{253C}<(.*?)> (.*)").expect("Invalid WinRAC regex"), Color::LightGreen),
     (Regex::new(r"\u{2042}<(.*?)> (.*)").expect("Invalid cRACk regex"), Color::Rgb(245, 245, 67)),
+    (Regex::new(r"\u{0D9E}<(.*?)> (.*)").expect("Invalid Snowdrop regex"), Color::Rgb(174, 255, 0)),
     (Regex::new(r"<(.*?)> (.*)").expect("Invalid clRAC regex"), Color::Cyan),
 ]);
 
@@ -27,4 +28,8 @@ pub static ANSI_REGEX: Lazy<Regex> = Lazy::new(|| {
 
 pub static CONTROL_CHARS_REGEX: Lazy<Regex> = Lazy::new(|| {
     Regex::new(r"[\x00-\x1F\x7F]").expect("Invalid CONTROL_CHARS_REGEX")
+});
+
+pub static AVATAR_REGEX: Lazy<Regex> = Lazy::new(|| {
+    Regex::new(r"(.*)\x06!!AR!!(.*)").expect("Invalid AVATAR_REGEX")
 });
