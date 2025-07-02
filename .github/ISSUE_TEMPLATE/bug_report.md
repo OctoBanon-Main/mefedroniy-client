@@ -7,22 +7,42 @@ assignees: OctoBanon-Main
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+### Brief Description
+[Clear one-sentence summary. Example: "App crashes when pasting invalid credentials"]
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+### How to Reproduce
+1. [First action]
+2. [Second action]
+3. [Exact input that triggers the issue]
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+### Expected Behavior
+[What should happen under normal circumstances]
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Actual Outcome
+- [ ] Crash with panic message
+- [ ] Error traceback appears
+- [ ] Wrong behavior (no crash)
+- [ ] Other: _____
 
-**Environment:**
- - OS: [e.g. iOS]
- - Version [e.g. 22]
+### Impact Level
+- [ ] Complete failure (can't use)
+- [ ] Major feature broken
+- [ ] Minor visual/UI issue
+
+### Error Details (if any)
+
+
+### Environment
+- **App Version:** [Visible in binary name]
+- **Operating System:** [Windows/macOS/Linux + version]
+- **Terminal:** [Name + version if known]
+- **Window Size:** [Columns x Rows]
+
+### Additional Info
+- Happens: [Every time/Sometimes/When...]
+- Previously worked: [Yes/No/Not sure]
+- Temporary fix: [If any]
+
+**Before submitting:**
+✓ Tried latest version
+✓ Included exact error message (if available)
