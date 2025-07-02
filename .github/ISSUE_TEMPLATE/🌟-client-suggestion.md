@@ -34,5 +34,5 @@ Example: Cyan, Light Blue, Gold, #FF9900
 
 ### ✅ Checklist
 
-- [ ] The symbol is unique (not used by another known client).
+- [ ] The symbol and color are unique (not used by another known client).
 - [ ] The regex correctly matches messages sent by this client.
