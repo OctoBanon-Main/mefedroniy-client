@@ -32,7 +32,7 @@ Must have two capture groups: (1) username, (2) message. -->
 <!-- Suggested color for the username when this agent is detected -->
 Example: Cyan, Light Blue, Gold, #FF9900
 
-###✅ Checklist
+### ✅ Checklist
 
-- [] The symbol is unique (not used by another known client).
-- [] The regex correctly matches messages sent by this client.
+- [ ] The symbol is unique (not used by another known client).
+- [ ] The regex correctly matches messages sent by this client.
