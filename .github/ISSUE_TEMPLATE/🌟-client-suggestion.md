@@ -1,7 +1,6 @@
 ---
 name: "\U0001F31F Client Suggestion"
-about: Suggest a new RAC client identifier so that it can be recognized and styled
-  in Mefedroniy Client
+about: Suggest a new user agent to be recognized and styled in Mefedroniy.
 title: ''
 labels: user agents
 assignees: OctoBanon-Main
