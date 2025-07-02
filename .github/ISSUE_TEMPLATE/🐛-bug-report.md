@@ -10,21 +10,15 @@ assignees: OctoBanon-Main
 **What happened?**
 <!-- One-liner. Example: "Panic when entering special characters in input field" -->
 
----
-
 ### 🔁 Reproduction Steps
 
 1. Run: `RUST_BACKTRACE=1 ./mefedroniy-client-vX.Y.Z+A.B.C-linux-x86_64`
 2. Perform: [describe the exact actions]
 3. Error occurs when: [e.g., submitting the form]
 
----
-
 ### ✅ Expected Behavior
 
 <!-- Describe what *should* have happened. Example: "Program should handle input gracefully without crashing." -->
-
----
 
 ### ❌ Actual Behavior
 
@@ -35,8 +29,6 @@ Check all that apply:
 - [  ] Performance degradation
 - [  ] Other: [describe]
 
----
-
 ### 💥 Crash Details (if applicable)
 
 ```rust
@@ -46,8 +38,6 @@ stack backtrace:
    0: ...
 ```
 
----
-
 ### 🖥 System Information
 
 Client version: mefedroniy-client-vX.Y.Z+A.B.C-[os]-[arch]
@@ -55,15 +45,11 @@ OS: [Windows/macOS/Linux + version]
 Terminal: [eg. "Windows Terminal", "Alacritty", "GNOME Terminal"]
 Window size: [eg. 80x24]
 
----
-
 ### 📸 UI Issues (if applicable)
 
  - [ ] Screenshot includes entire window
  - [ ] Screenshot uses original colors
  - [ ] Screenshot shows error context clearly
-
----
 
 ### 🔍 Diagnostics
 
@@ -72,8 +58,6 @@ Window size: [eg. 80x24]
 - Temporary workaround: [If found]
 
 ### 🧹 Pre-Submission Checklist
-
----
 
 - [ ] Reproduced with RUST_BACKTRACE=full
 - [ ] Tested latest version
