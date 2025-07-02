@@ -58,6 +58,11 @@ Alternatively, you can download the precompiled binary from the [Releases](https
 - 🏛️ **Original Hub** - The first complete reference
 - 🚀 **Independent** - Fully separate implementation
 
+## Client suggestion
+
+**Do not submit pull requests to add, update, or remove clients.  
+Please use [Issues](../../issues) instead.**
+
 ## License
 
 This project is licensed under the MIT License.
